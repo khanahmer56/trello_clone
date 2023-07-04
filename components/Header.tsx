@@ -14,17 +14,17 @@ const Header = () => {
     state.setSearchString,
   ]);
   const [loading, setLoading] = useState(false);
-  // const [suggestion, setSuggestion] = useState("");
-  // useEffect(() => {
-  //   if (board.columns.size === 0) return;
-  //   setLoading(true);
-  //   const fetchSuggestionFunc = async () => {
-  //     const suggestion = await fetchSuggestion(board);
-  //     setSuggestion(suggestion);
-  //     setLoading(false);
-  //   };
-  //   fetchSuggestionFunc();
-  // }, [board]);
+  const [suggestion, setSuggestion] = useState("");
+  useEffect(() => {
+    if (board.columns.size === 0) return;
+    setLoading(true);
+    const fetchSuggestionFunc = async () => {
+      const suggestion = await fetchSuggestion(board);
+      setSuggestion(suggestion);
+      setLoading(false);
+    };
+    fetchSuggestionFunc();
+  }, [board]);
 
   return (
     <header>
@@ -65,9 +65,9 @@ const Header = () => {
               loading && "animate-spin"
             }`}
           />
-          {/* {suggestion && !loading
+          {suggestion && !loading
             ? suggestion
-            : "Gpt is loading your suggestion.."} */}
+            : "Gpt is loading your suggestion.."}
         </p>
       </div>
     </header>
