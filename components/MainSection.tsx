@@ -1,8 +1,14 @@
 "use client";
 import { useBoardStore } from "@/store/AppStore";
 import React, { useEffect } from "react";
-import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  DropResult,
+  Droppable,
+  resetServerContext,
+} from "react-beautiful-dnd";
 import Column from "./Column";
+import { GetServerSideProps } from "next";
 
 const MainSection = () => {
   const [getboards, updateTodo] = useBoardStore((state) => [
@@ -88,5 +94,9 @@ const MainSection = () => {
     </DragDropContext>
   );
 };
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  resetServerContext(); // <-- CALL RESET SERVER CONTEXT, SERVER SIDE
 
+  return { props: { data: [] } };
+};
 export default MainSection;
