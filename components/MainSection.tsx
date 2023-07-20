@@ -8,7 +8,7 @@ import {
   resetServerContext,
 } from "react-beautiful-dnd";
 import Column from "./Column";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 
 const MainSection = () => {
   const [getboards, updateTodo] = useBoardStore((state) => [
@@ -94,7 +94,7 @@ const MainSection = () => {
     </DragDropContext>
   );
 };
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetStaticProps = async ({}) => {
   resetServerContext(); // <-- CALL RESET SERVER CONTEXT, SERVER SIDE
 
   return { props: { data: [] } };

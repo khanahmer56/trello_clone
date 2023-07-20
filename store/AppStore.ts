@@ -43,14 +43,14 @@ export const useBoardStore = create<BoardState>((set, get) => ({
       await storage.deleteFile(todo.image.bucketId, todo.image.fieldId);
     }
     await database.deleteDocument(
-      process.env.NEXT_PUBLIC_DATABASE_ID!,
+      `64764108a04bc7675d58`,
       process.env.NEXT_PUBLIC_COLLECTION_ID!,
       todo.$id
     );
   },
   updateTodo: async (todo, columnId) => {
     await database.updateDocument(
-      process.env.NEXT_PUBLIC_DATABASE_ID!,
+      `64764108a04bc7675d58`,
       process.env.NEXT_PUBLIC_COLLECTION_ID!,
       todo.$id,
       {
@@ -73,7 +73,7 @@ export const useBoardStore = create<BoardState>((set, get) => ({
       }
     }
     const { $id } = await database.createDocument(
-      process.env.NEXT_PUBLIC_DATABASE_ID!,
+      `64764108a04bc7675d58`,
       process.env.NEXT_PUBLIC_COLLECTION_ID!,
       ID.unique(),
       {

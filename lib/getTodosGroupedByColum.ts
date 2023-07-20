@@ -1,7 +1,7 @@
 import { database } from "@/appwrite";
 export const getTodosGroupedByColum = async () => {
   const data = await database.listDocuments(
-    process.env.NEXT_PUBLIC_DATABASE_ID!,
+    `64764108a04bc7675d58`,
     process.env.NEXT_PUBLIC_COLLECTION_ID!
   );
   const todos = data.documents;
